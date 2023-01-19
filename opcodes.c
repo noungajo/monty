@@ -52,10 +52,10 @@ void push(stack_t **head, unsigned int counter)
 		free_stack(*head);
 		exit(EXIT_FAILURE); }
 	n = atoi(bus.arg);
-	if (bus.lifi == 0)
-		add_node(head, n);
-	else
-		add_node_end(head, n);
+// 	if (bus.lifi == 0)
+// 		add_node(head, n);
+// 	else
+// 		add_node_end(head, n);
 }
 
 /**
