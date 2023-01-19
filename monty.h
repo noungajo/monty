@@ -1,11 +1,14 @@
 #ifndef MONTY_H
 #define MONTY_H
+#define  _GNU_SOURCE
 #include <stdio.h>
-#include <fcntl.h>
 #include <stdlib.h>
+#include <fcntl.h>
 #include <unistd.h>
 #include <string.h>
 #include <ctype.h>
+#include <sys/types.h>
+
 
 /**
  * struct op_ret_queue_s - Return value of opcodes and if list is stack/queue
@@ -37,6 +40,22 @@ typedef struct stack_s
 } stack_t;
 
 /**
+ *struct bus_s - variables -args, file, line content
+ *@arg: value
+ *@file: pointer to monty file
+ *@content: line content
+ *@lifi: flag change stack and queue
+ */
+typedef struct bus_s
+{
+	char *arg;
+	FILE *file;
+	char *content;
+	int lifi;
+} bus_t;
+extern bus_t bus;
+
+/**
  * struct instruction_s - opcoode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
@@ -49,7 +68,9 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-
+char *_realloc(char *ptr, unsigned int old_size, unsigned int new_size);
+ssize_t getstdin(char **lineptr, int file);
+char  *clean_line(char *content);
 void push(stack_t **stack, unsigned int line_num);
 void pall(stack_t **stack, unsigned int line_num);
 void pint(stack_t **stack, unsigned int line_num);
@@ -71,6 +92,7 @@ void add_node_end(stack_t **stack, int push_value);
 char *find_command(char *line, stack_t **stack, unsigned int line_num);
 int check_codes(char *command, stack_t **stack, size_t line_num);
 int int_check(char *push_arg);
+int execute(char *content, stack_t **head, unsigned int counter, FILE *file);
 void free_and_exit(char *line, FILE *file, stack_t *stack);
 void free_stack(stack_t *stack);
 #endif

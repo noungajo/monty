@@ -1,4 +1,5 @@
 #include "monty.h"
+bus_t bus = {NULL, NULL, NULL, 0};
 
 /**
  * main - Loop through given file and run given opcode commands
