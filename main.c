@@ -67,7 +67,6 @@ void free_and_exit(char *line, FILE *file, stack_t *stack)
 void free_stack(stack_t *stack)
 {
 	stack_t *kill_node;
-
 	while (stack != NULL)
 	{
 		kill_node = stack;
@@ -90,7 +89,6 @@ int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 				{"pop", pop},
 				{"swap", swap},
 				{"add", add},
-				{"nop", nop},
 				{"sub", sub},
 				{"div", _div},
 				{"mul", mul},
