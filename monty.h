@@ -88,6 +88,9 @@ void rotl(stack_t **stack, unsigned int line_num);
 
 void add_node(stack_t **stack, int push_value);
 void add_node_end(stack_t **stack, int push_value);
+void queue(stack_t **head, unsigned int counter);
+void stack(stack_t **head, unsigned int counter);
+
 
 char *find_command(char *line, stack_t **stack, unsigned int line_num);
 int check_codes(char *command, stack_t **stack, size_t line_num);
