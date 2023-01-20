@@ -68,12 +68,12 @@ void free_stack(stack_t *stack)
 {
 	stack_t *kill_node;
 	
-	kill_node = head;
-	while (head)
+	kill_node = stack;
+	while (stack)
 	{
-		kill_node = head->next;
+		kill_node = stack->next;
 		free(kill_node);
-		head = kill_node;
+		stack = kill_node;
 	}
 }
 /**
