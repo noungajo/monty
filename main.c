@@ -67,13 +67,12 @@ void free_and_exit(char *line, FILE *file, stack_t *stack)
 void free_stack(stack_t *stack)
 {
 	stack_t *kill_node;
-	
-	kill_node = head;
-	while (head)
+
+	while (stack != NULL)
 	{
-		kill_node = head->next;
+		kill_node = stack;
+		stack = stack->next;
 		free(kill_node);
-		head = kill_node;
 	}
 }
 /**
