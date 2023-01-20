@@ -33,11 +33,11 @@ int main(int argc, char *argv[])
 	{
 		line = NULL;
 		read = getline(&line, &size, file);
-		bus.line = line;
+		bus.content = line;
 		line_num++;
-		if (read_line > 0)
+		if (read > 0)
 		{
-			execute(content, &stack, counter, file);
+			execute(line, &stack, line_num, file);
 		}
 		free(line);
 	}
